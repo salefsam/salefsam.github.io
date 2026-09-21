@@ -1,484 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samuel Salefske — Lead Data Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy:   #0F1E2E;
-      --slate:  #4A6580;
-      --gold:   #C8A96E;
-      --bg:     #F5F5F0;
-      --text:   #1A2733;
-      --muted:  #6B7E8F;
-      --border: #D8D8D2;
-      --mono:   'IBM Plex Mono', monospace;
-      --sans:   'IBM Plex Sans', sans-serif;
-    }
-
-    html { font-size: 16px; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 400;
-      line-height: 1.65;
-      padding: 3rem 1.5rem 6rem;
-    }
-
-    /* ── Layout ── */
-    .page {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    /* ── Header ── */
-    header {
-      padding-bottom: 2.5rem;
-      border-bottom: 2px solid var(--navy);
-      margin-bottom: 3rem;
-    }
-
-    .name-line {
-      display: flex;
-      align-items: baseline;
-      gap: 0.15em;
-    }
-
-    h1 {
-      font-family: var(--mono);
-      font-size: clamp(1.75rem, 5vw, 2.6rem);
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 0.55em;
-      height: 1em;
-      background: var(--gold);
-      margin-left: 0.1em;
-      vertical-align: text-bottom;
-      animation: blink 1.1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
-    }
-
-    .title-tag {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--gold);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-top: 0.5rem;
-    }
-
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem 1.5rem;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--slate);
-    }
-
-    .contact a {
-      color: var(--slate);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .contact a:hover {
-      color: var(--navy);
-      border-color: var(--gold);
-    }
-
-    /* ── Sections ── */
-    section {
-      margin-bottom: 3rem;
-    }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    /* ── Summary ── */
-    .summary p {
-      font-size: 0.95rem;
-      color: var(--text);
-      font-weight: 300;
-      max-width: 680px;
-      line-height: 1.75;
-    }
-
-    /* ── Experience ── */
-    .job {
-      position: relative;
-      padding-left: 1.25rem;
-      margin-bottom: 2.25rem;
-    }
-
-    .job::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.4em;
-      bottom: 0;
-      width: 2px;
-      background: var(--border);
-    }
-
-    .job:hover::before {
-      background: var(--gold);
-      transition: background 0.3s;
-    }
-
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      margin-bottom: 0.1rem;
-    }
-
-    .company {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--navy);
-    }
-
-    .location {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .role-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.1rem 1rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .role {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--slate);
-      font-style: italic;
-    }
-
-    .dates {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .company-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
-
-    .job ul {
-      padding-left: 1rem;
-      list-style: none;
-    }
-
-    .job ul li {
-      font-size: 0.875rem;
-      line-height: 1.7;
-      color: var(--text);
-      margin-bottom: 0.3rem;
-      position: relative;
-    }
-
-    .job ul li::before {
-      content: '—';
-      position: absolute;
-      left: -1rem;
-      color: var(--border);
-    }
-
-    /* ── Skills ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-group {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.9rem 1.1rem;
-    }
-
-    .skill-group-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--slate);
-      margin-bottom: 0.45rem;
-    }
-
-    .skill-group p {
-      font-size: 0.82rem;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* ── Education ── */
-    .edu-item {
-      margin-bottom: 0.9rem;
-    }
-
-    .edu-degree {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--navy);
-    }
-
-    .edu-school {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* ── Cert badge ── */
-    .cert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1.25rem;
-      padding: 0.4rem 0.85rem;
-      border: 1px solid var(--gold);
-      border-radius: 3px;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--gold);
-      letter-spacing: 0.06em;
-    }
-
-    .cert-badge::before {
-      content: '✦';
-      font-size: 0.6rem;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 520px) {
-      .job-header { flex-direction: column; }
-      .role-row   { flex-direction: column; }
-      .skills-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .cursor { animation: none; opacity: 1; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samuel Salefske — Lead Data Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0F1E2E;
+  --slate: #4A6580;
+  --gold: #C8A96E;
+  --bg: #F5F5F0;
+  --text: #1A2733;
+  --muted: #6B7E8F;
+  --border: #D8D8D2;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+}
+html { font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.65;
+  padding: 3rem 1.5rem 6rem;
+}
+/* ── Layout ── */
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+/* ── Header ── */
+header {
+  padding-bottom: 2.5rem;
+  border-bottom: 2px solid var(--navy);
+  margin-bottom: 3rem;
+}
+.name-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15em;
+}
+h1 {
+  font-family: var(--mono);
+  font-size: clamp(1.75rem, 5vw, 2.6rem);
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  background: var(--gold);
+  margin-left: 0.1em;
+  vertical-align: text-bottom;
+  animation: blink 1.1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.title-tag {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--slate);
+}
+.contact a {
+  color: var(--slate);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact a:hover {
+  color: var(--navy);
+  border-color: var(--gold);
+}
+/* ── Sections ── */
+section {
+  margin-bottom: 3rem;
+}
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+/* ── Summary ── */
+.summary p {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 300;
+  max-width: 680px;
+  line-height: 1.75;
+}
+/* ── Experience ── */
+.job {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+.job::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.job:hover::before {
+  background: var(--gold);
+  transition: background 0.3s;
+}
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.1rem;
+}
+.company {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.location {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.role-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.1rem 1rem;
+  margin-bottom: 0.6rem;
+}
+.role {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--slate);
+  font-style: italic;
+}
+.dates {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.company-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.job ul {
+  padding-left: 1rem;
+  list-style: none;
+}
+.job ul li {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+  position: relative;
+}
+.job ul li::before {
+  content: '—';
+  position: absolute;
+  left: -1rem;
+  color: var(--border);
+}
+/* ── Skills ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+.skill-group {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.9rem 1.1rem;
+}
+.skill-group-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 0.45rem;
+}
+.skill-group p {
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+/* ── Education ── */
+.edu-item {
+  margin-bottom: 0.9rem;
+}
+.edu-degree {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--navy);
+}
+.edu-school {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+/* ── Cert badge ── */
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+.cert-badge::before {
+  content: '✦';
+  font-size: 0.6rem;
+}
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .job-header { flex-direction: column; }
+  .role-row { flex-direction: column; }
+  .skills-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; opacity: 1; }
+}
+</style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Header -->
-  <header>
-    <div class="name-line">
-      <h1>Samuel William Salefske</h1><span class="cursor"></span>
+<!-- Header -->
+<header>
+  <div class="name-line">
+    <h1>Samuel William Salefske</h1><span class="cursor"></span>
+  </div>
+  <p class="title-tag">Lead Data Engineer</p>
+  <div class="contact">
+    <span>Paw Paw, MI · Remote</span>
+    <a href="tel:2695470573">(269) 547-0573</a>
+    <a href="mailto:Salefske21@gmail.com">Salefske21@gmail.com</a>
+  </div>
+</header>
+
+<!-- Summary -->
+<section class="summary">
+  <p class="section-label">Profile</p>
+  <p>Lead Data Engineer with 10+ years of experience architecting cloud-native data platforms for high-volume transaction processing. Currently own 100+ production pipelines (built roughly 50, maintain roughly double that) processing volumes from 50,000 to millions of transactions daily on AWS and Snowflake. Led a cost-reduction initiative migrating pipelines from AWS Glue to Lambda, cutting compute costs across the platform. Serve on an architecture review board, mentor junior engineers, and translate ambiguous business requirements into governed, scalable data solutions. AWS Certified Cloud Practitioner.</p>
+</section>
+
+<!-- Experience -->
+<section>
+  <p class="section-label">Experience</p>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="company">SessionM → Mastercard → Capillary Technologies</span>
+      <span class="location">Remote</span>
     </div>
-    <p class="title-tag">Senior Data Architect &amp; Lead Data Engineer</p>
-    <div class="contact">
-      <span>Paw Paw, MI · Remote</span>
-      <a href="tel:2695470573">(269) 547-0573</a>
-      <a href="mailto:Salefske21@gmail.com">Salefske21@gmail.com</a>
+    <p class="company-note">Continuous role through Mastercard's acquisition of SessionM and its later divestiture to Capillary Technologies</p>
+
+    <div class="role-row">
+      <span class="role">Lead Data Engineer</span>
+      <span class="dates">Mar 2026 – Present</span>
     </div>
-  </header>
+    <ul>
+      <li>Own and architect 100+ data pipelines (built ~50 from scratch, maintain ~100 total) processing transaction volumes ranging from 50,000 to several million records daily, supporting star-schema reporting layers and normalized operational stores.</li>
+      <li>Led a platform-wide migration of pipelines from AWS Glue to AWS Lambda, reducing compute costs while maintaining throughput and reliability on high-volume transaction processing domains.</li>
+      <li>Serve on the architecture review board, evaluating new technical solutions and setting platform standards for data modeling and governance.</li>
+      <li>Lead client workshops and design sessions to produce Business Requirements Docs and Testing Plans/Frameworks for cross-functional engineering initiatives.</li>
+      <li>Mentor 2 junior engineers through weekly 1:1s; run onboarding lunch-and-learns for new hires.</li>
+    </ul>
 
-  <!-- Summary -->
-  <section class="summary">
-    <p class="section-label">Profile</p>
-    <p>Senior Data Architect and Lead Data Engineer with 10+ years of experience designing enterprise data models, governing metadata and lineage, and delivering scalable, cloud-native data platforms in AWS and hybrid environments. Deep expertise in ETL/ELT pipeline design, data quality frameworks, and cross-system data integration — with a track record of leading architecture review boards, mentoring engineering teams, and translating ambiguous business requirements into long-term, interoperable data solutions.</p>
-  </section>
-
-  <!-- Experience -->
-  <section>
-    <p class="section-label">Experience</p>
-
-    <div class="job">
-      <div class="job-header">
-        <span class="company">Capillary Technologies</span>
-        <span class="location">Remote</span>
-      </div>
-      <p class="company-note">Joined via Mastercard's divestiture of SessionM to Capillary Technologies, May 2026</p>
-      <div class="role-row">
-        <span class="role">Lead Data Engineer</span>
-        <span class="dates">May 2026 – Present</span>
-      </div>
-      <ul>
-        <li>Architect conceptual and physical data models for transaction processing domains, supporting star-schema reporting layers and normalized operational stores handling millions of records daily.</li>
-        <li>Lead cross-functional engineering initiatives across transaction data platforms.</li>
-        <li>Serve on architecture review board evaluating new technical solutions and enforcing platform standards for data modeling and governance.</li>
-        <li>Lead client workshops and design sessions to formulate Business Requirements Docs and Testing Plans.</li>
-        <li>Mentor junior developers through weekly 1:1s and lunch-and-learns for onboarding engineers.</li>
-      </ul>
+    <div class="role-row" style="margin-top:0.9rem;">
+      <span class="role">Senior Data Engineer</span>
+      <span class="dates">Sept 2023 – Mar 2026</span>
     </div>
+    <ul>
+      <li>Guided engineering teams on secure coding standards and vulnerability remediation strategy.</li>
+      <li>Designed, architected, and maintained API-based integrations across internal and external systems using Python, SQL, and Java.</li>
+    </ul>
 
-    <div class="job">
-      <div class="job-header">
-        <span class="company">SessionM / Mastercard</span>
-        <span class="location">Remote</span>
-      </div>
-      <p class="company-note">SessionM acquired by Mastercard; core platform and team remained continuous through Capillary divestiture</p>
-
-      <div class="role-row">
-        <span class="role">Lead Data Engineer</span>
-        <span class="dates">Mar 2026 – May 2026</span>
-      </div>
-      <ul>
-        <li>Architect conceptual and physical data models for transaction processing domains, supporting star-schema reporting layers and normalized operational stores.</li>
-        <li>Serve on architecture review board; lead client workshops and design sessions.</li>
-        <li>Mentor junior developers through 1:1 sessions and onboarding lunch-and-learns.</li>
-      </ul>
-
-      <div class="role-row" style="margin-top:0.9rem;">
-        <span class="role">Senior Data Engineer</span>
-        <span class="dates">Sept 2023 – Mar 2026</span>
-      </div>
-      <ul>
-        <li>Guided engineering teams on secure coding standards and vulnerability remediation strategy.</li>
-        <li>Designed, architected, and maintained API-based integrations across internal and external systems using Python, SQL, and Java.</li>
-      </ul>
-
-      <div class="role-row" style="margin-top:0.9rem;">
-        <span class="role">Data Engineer</span>
-        <span class="dates">Aug 2021 – Sept 2023</span>
-      </div>
-      <ul>
-        <li>Built and maintained API-based integrations across internal and external systems using Python, SQL, and Java.</li>
-        <li>Implemented cloud-native solutions in AWS to improve scalability and reliability.</li>
-      </ul>
+    <div class="role-row" style="margin-top:0.9rem;">
+      <span class="role">Data Engineer</span>
+      <span class="dates">Aug 2021 – Sept 2023</span>
     </div>
+    <ul>
+      <li>Built and maintained API-based integrations across internal and external systems using Python, SQL, and Java.</li>
+      <li>Implemented cloud-native solutions in AWS to improve scalability and reliability of data platforms.</li>
+    </ul>
+  </div>
 
-    <div class="job">
-      <div class="job-header">
-        <span class="company">Deloitte</span>
-        <span class="location">Remote</span>
-      </div>
-      <div class="role-row">
-        <span class="role">Senior Consultant</span>
-        <span class="dates">Oct 2019 – Aug 2021</span>
-      </div>
-      <ul>
-        <li>Designed and implemented enterprise Third-Party Risk Management systems.</li>
-        <li>Built executive-level dashboards aggregating enterprise-wide risk metrics.</li>
-        <li>Developed governance frameworks across multiple domains to reduce development and production issues.</li>
-        <li>Led client workshops, requirements gathering sessions, and end-user training.</li>
-      </ul>
+  <div class="job">
+    <div class="job-header">
+      <span class="company">Deloitte</span>
+      <span class="location">Remote</span>
     </div>
+    <div class="role-row">
+      <span class="role">Senior Consultant</span>
+      <span class="dates">Oct 2019 – Aug 2021</span>
+    </div>
+    <ul>
+      <li>Designed and implemented an enterprise Third-Party Risk Management system covering hundreds of vendors across roughly 59 business units.</li>
+      <li>Built executive-level dashboards aggregating enterprise-wide risk metrics for leadership visibility.</li>
+      <li>Developed governance frameworks across multiple domains to reduce development and production issues.</li>
+      <li>Led client workshops, requirements-gathering sessions, and end-user training.</li>
+    </ul>
+  </div>
 
-    <div class="job">
-      <div class="job-header">
-        <span class="company">U.S. Bank</span>
-        <span class="location">Remote</span>
-      </div>
-      <div class="role-row">
-        <span class="role">Information Security Specialist</span>
-        <span class="dates">Mar 2019 – Oct 2019</span>
-      </div>
-      <div class="role-row">
-        <span class="role">Application Developer</span>
-        <span class="dates">Feb 2018 – Mar 2019</span>
-      </div>
-      <ul>
-        <li>Rebuilt enterprise Risk Management module integrating internal software catalog and evidence repositories.</li>
-        <li>Developed modular approval and commenting applications to streamline workflows.</li>
-        <li>Built Windows listener services integrating APIs with internal systems for automated risk rating.</li>
-        <li>Led system upgrades and platform scaling initiatives.</li>
-      </ul>
+  <div class="job">
+    <div class="job-header">
+      <span class="company">U.S. Bank</span>
+      <span class="location">Remote</span>
     </div>
+    <div class="role-row">
+      <span class="role">Information Security Specialist</span>
+      <span class="dates">Mar 2019 – Oct 2019</span>
+    </div>
+    <div class="role-row">
+      <span class="role">Application Developer</span>
+      <span class="dates">Feb 2018 – Mar 2019</span>
+    </div>
+    <ul>
+      <li>Rebuilt an enterprise Risk Management module integrating the internal software catalog and evidence repositories.</li>
+      <li>Built Windows listener services integrating APIs with internal systems for automated risk rating.</li>
+      <li>Led system upgrades and platform scaling initiatives.</li>
+    </ul>
+  </div>
 
-    <div class="job">
-      <div class="job-header">
-        <span class="company">Lokion Interactive</span>
-        <span class="location">Memphis, TN</span>
-      </div>
-      <div class="role-row">
-        <span class="role">Developer</span>
-        <span class="dates">Sept 2015 – Feb 2018</span>
-      </div>
-      <div class="role-row">
-        <span class="role">Associate Developer</span>
-        <span class="dates">May 2014 – Sept 2015</span>
-      </div>
-      <ul>
-        <li>Developed custom C#/.NET integrations between Archer and external systems.</li>
-        <li>Designed event-driven workflows and automated data feed integrations.</li>
-        <li>Led technical sales discussions and requirements gathering sessions.</li>
-      </ul>
+  <div class="job">
+    <div class="job-header">
+      <span class="company">Lokion Interactive</span>
+      <span class="location">Memphis, TN</span>
     </div>
-  </section>
+    <div class="role-row">
+      <span class="role">Developer</span>
+      <span class="dates">Sept 2015 – Feb 2018</span>
+    </div>
+    <div class="role-row">
+      <span class="role">Associate Developer</span>
+      <span class="dates">May 2014 – Sept 2015</span>
+    </div>
+    <ul>
+      <li>Developed custom C#/.NET integrations between Archer and external systems and designed event-driven, automated data feed workflows.</li>
+      <li>Led technical sales discussions and requirements-gathering sessions.</li>
+    </ul>
+  </div>
 
-  <!-- Skills -->
-  <section>
-    <p class="section-label">Technical Skills</p>
-    <div class="skills-grid">
-      <div class="skill-group">
-        <p class="skill-group-label">Languages</p>
-        <p>Python, SQL, Java, C#, REST APIs, XML, JSON</p>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-label">Data Modeling &amp; Governance</p>
-        <p>ER Modeling, 3NF, Normalized &amp; Denormalized Design, Star/Snowflake Schemas</p>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-label">Cloud Platforms &amp; Storage</p>
-        <p>AWS (S3, Glue, Redshift), AWS Glue Data Catalog, Snowflake, Databricks / Delta Lake</p>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-label">Data Integration &amp; Quality</p>
-        <p>ETL/ELT Pipeline Design, Batch &amp; Streaming Pipelines, Data Quality Frameworks, Cross-System API Integration</p>
-      </div>
-      <div class="skill-group">
-        <p class="skill-group-label">DevSecOps &amp; Tooling</p>
-        <p>CI/CD (Jenkins / GitHub Actions), Git, JIRA, Splunk</p>
-      </div>
-    </div>
-  </section>
+</section>
 
-  <!-- Education -->
-  <section>
-    <p class="section-label">Education</p>
-    <div class="edu-item">
-      <p class="edu-degree">Bachelor of Science — Security &amp; Information Assurance (Biometric Security)</p>
-      <p class="edu-school">Davenport University</p>
+<!-- Skills -->
+<section>
+  <p class="section-label">Technical Skills</p>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <p class="skill-group-label">Languages</p>
+      <p>Python, SQL, Java, C#, REST APIs, XML, JSON</p>
     </div>
-    <div class="edu-item">
-      <p class="edu-degree">Associate of Applied Science — Security &amp; Information Assurance</p>
-      <p class="edu-school">Davenport University</p>
+    <div class="skill-group">
+      <p class="skill-group-label">Data Modeling &amp; Governance</p>
+      <p>ER Modeling, 3NF, Normalized &amp; Denormalized Design, Star/Snowflake Schemas</p>
     </div>
-    <div class="cert-badge">AWS Certified Cloud Practitioner</div>
-  </section>
+    <div class="skill-group">
+      <p class="skill-group-label">Cloud Platforms &amp; Storage</p>
+      <p>AWS (S3, Glue, Lambda, Redshift), AWS Glue Data Catalog, Snowflake, Databricks / Delta Lake</p>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-label">Data Integration &amp; Quality</p>
+      <p>ETL/ELT Pipeline Design, Batch &amp; Streaming Pipelines, Data Quality Frameworks, Cross-System API Integration</p>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-label">DevSecOps &amp; Tooling</p>
+      <p>CI/CD (Jenkins / GitHub Actions), Git, JIRA, Splunk</p>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section>
+  <p class="section-label">Education</p>
+  <div class="edu-item">
+    <p class="edu-degree">Bachelor of Science — Security &amp; Information Assurance (Biometric Security)</p>
+    <p class="edu-school">Davenport University</p>
+  </div>
+  <div class="edu-item">
+    <p class="edu-degree">Associate of Applied Science — Security &amp; Information Assurance</p>
+    <p class="edu-school">Davenport University</p>
+  </div>
+  <div class="cert-badge">AWS Certified Cloud Practitioner</div>
+</section>
 
 </div>
 </body>
